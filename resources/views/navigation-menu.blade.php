@@ -1,8 +1,8 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white border-bottom sticky-top">
+<nav class="navbar navbar-expand-md navbar-light bg-white border-bottom fixed-top" id="mainNav">
     <div class="container">
         <!-- Logo -->
         <a class="navbar-brand me-4" href="/">
-            <x-jet-application-mark width="36" />
+            <x-jet-application-mark width="43"/>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
@@ -15,7 +15,10 @@
                     {{ __('Dashboard') }}
                 </x-jet-nav-link>
             </ul>
-
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="darkMode">
+                <label class="form-check-label" for="darkMode">Dark Mode</label>
+            </div>
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav align-items-baseline">
                 <!-- Teams Dropdown -->

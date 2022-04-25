@@ -1,7 +1,41 @@
-
 /*--------------------------------------------------------------
-# General
+# Main Style
 --------------------------------------------------------------*/
+html {
+    scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar,
+.table-responsive::-webkit-scrollbar {
+    width: 12px;
+}
+
+html::-webkit-scrollbar-track,
+.table-responsive::-webkit-scrollbar {
+    background-color: white;
+}
+
+html::-webkit-scrollbar-thumb,
+.table-responsive::-webkit-scrollbar {
+    background: #bebebe;
+    border-radius: 25px;
+}
+
+html ::selection {
+    color: black;
+    background: #bebebe;
+}
+
+body a,
+.card .card-body .card-title:hover {
+    text-decoration: none;
+    transition: 0.3s all;
+    -webkit-transition: 0.3s all;
+    -moz-transition: 0.3s all;
+    -o-transition: 0.3s all;
+    -ms-transition: 0.3s all;
+}
+
 body {
     /* background-color: #f5f5f5; */
     color: #4e4e4e;

@@ -17,7 +17,7 @@
 
     <main id="main">
         <!-- ======= About Section ======= -->
-        <section id="about" class="about-mf sect-pt4 route">
+        <section id="about" class="about-mf sect-pt4 route"  data-aos="zoom-in-up">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
@@ -64,7 +64,7 @@
 
                                         @foreach ($skills as $item)
                                             @foreach ($item as $s)
-                                                <span>{{ $s->name }}</span>
+                                                <span class="lead"><b>{{ $s->name }} </b></span>
                                                 <span class="pull-right">{{ $s->percentage }}%</span>
                                                 <div class="progress">
                                                     <div class="progress-bar" role="progressbar"

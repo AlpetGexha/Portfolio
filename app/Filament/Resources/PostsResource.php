@@ -58,7 +58,7 @@ class PostsResource extends Resource
                 Tables\Columns\TextColumn::make('user_id'),
                 Tables\Columns\TextColumn::make('title'),
                 Tables\Columns\TextColumn::make('slug'),
-                Tables\Columns\TextColumn::make('body'),
+                Tables\Columns\TextColumn::make('body')->limit(50),
                 Tables\Columns\TextColumn::make('views'),
                 Tables\Columns\TextColumn::make('status'),
                 Tables\Columns\TextColumn::make('created_at')

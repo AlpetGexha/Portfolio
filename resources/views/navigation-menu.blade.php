@@ -28,8 +28,8 @@
                         <x-slot name="trigger">
                             {{ Auth::user()->currentTeam->name }}
 
-                            <svg class="ms-2" width="18" xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 20 20" fill="currentColor">
+                            <svg class="ms-2" width="18" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                fill="currentColor">
                                 <path fill-rule="evenodd"
                                     d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
                                     clip-rule="evenodd" />
@@ -105,8 +105,9 @@
                             <hr class="dropdown-divider">
 
                             <!-- Authentication -->
-                            <x-jet-dropdown-link href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                 document.getElementById('logout-form').submit();">
+                            <x-jet-dropdown-link href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                                                                 document.getElementById('logout-form').submit();">
                                 {{ __('Log out') }}
                             </x-jet-dropdown-link>
                             <form method="POST" id="logout-form" action="{{ route('logout') }}">
@@ -115,7 +116,13 @@
                         </x-slot>
                     </x-jet-dropdown>
                 @endauth
+
             </ul>
+            <div class="d-flex align-items-center header_icone">
+                <a href="{{ config('social.github') }}"    target="_blank" title="Github" style="margin-right: 8px;"> <i class="fa-brands fa-github"></i></a>
+                <a href="{{ config('social.linkedin') }}"  target="_blank" title="Linkedin"> <i class="fa-brands fa-linkedin"></i></a>
+            </div>
+
         </div>
     </div>
 </nav>

@@ -12,11 +12,23 @@ class Aboutme extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'profile', 'email', 'phone', 'body',  'skills', 'socials',
+        'name', 'profile', 'email', 'phone', 'body',  'skills', 'socials', 'services', 'facts'
     ];
 
     protected $casts = [
-        'skills' => 'array', 'socials' => 'array',
+        'skills' => 'array',
+        'socials' => 'array',
+        'services' => 'array',
+        'facts' => 'array',
     ];
 
+    public static function getLinkedin()
+    {
+        return 'https://www.linkedin.com/in/alpet-gexha-499b071a3/';
+    }
+
+    public static function getGithub()
+    {
+        return 'https://www.linkedin.com/in/alpet-gexha-499b071a3/';
+    }
 }

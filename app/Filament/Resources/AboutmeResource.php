@@ -9,10 +9,12 @@ use Filament\Forms;
 use Filament\Tables;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
+use Filament\Tables\Columns\TextColumn;
 use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 
 
@@ -37,11 +39,23 @@ class AboutmeResource extends Resource
                         TextInput::make('percentage')->required()->integer()->maxValue(100)->minValue(1),
                         TextInput::make('icon')->nullable(),
                     ])->columns(3),
-                Repeater::make('socials')
+                Repeater::make('skills')
                     ->schema([
                         TextInput::make('name')->required(),
-                        TextInput::make('url')->required()->url(),
+                        TextInput::make('percentage')->required()->integer()->maxValue(100)->minValue(1),
                         TextInput::make('icon')->nullable(),
+                    ])->columns(3),
+                Repeater::make('services')->columnSpan(3)
+                    ->schema([
+                        TextInput::make('experience')->required(),
+                        Textarea::make('body')->required(),
+                        TextInput::make('icon')->required(),
+                    ])->columns(3),
+                    Repeater::make('facts')->columnSpan(2)
+                    ->schema([
+                        TextInput::make('title')->required(),
+                        TextInput::make('count')->required()->integer()->minValue(1),
+                        TextInput::make('icon')->required(),
                     ])->columns(3),
 
             ]);
@@ -51,7 +65,13 @@ class AboutmeResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('name'),
+                TextColumn::make('profile'),
+                TextColumn::make('email'),
+                TextColumn::make('phone'),
+                TextColumn::make('body'),
+                // TextColumn::make('skills'),
+                // TextColumn::make('services'),
             ])
             ->filters([
                 //

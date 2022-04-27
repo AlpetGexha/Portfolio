@@ -22,6 +22,8 @@ return new class extends Migration
             $table->text('body');
             $table->json('skills')->nullable();
             $table->json('socials')->nullable();
+            $table->json('services')->nullable();
+            $table->json('facts')->nullable();
             $table->timestamps();
         });
     }

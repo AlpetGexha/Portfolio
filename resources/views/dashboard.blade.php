@@ -17,7 +17,7 @@
 
     <main id="main">
         <!-- ======= About Section ======= -->
-        <section id="about" class="about-mf sect-pt4 route"  data-aos="zoom-in-up">
+        <section id="about" class="about-mf sect-pt4 route" data-aos="zoom-in-up">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
@@ -103,171 +103,66 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="title-box text-center">
-                            <h3 class="title-a">
-                                Services
+                            <h3 class="title-a" data-aos="zoom-in">
+                                {{ __('Services') }}
                             </h3>
                             <p class="subtitle-a">
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                                {{-- Lorem ipsum, dolor sit amet consectetur adipisicing elit. --}}
                             </p>
                             <div class="line-mf"></div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="service-box">
-                            <div class="service-ico">
-                                <span class="ico-circle"><i class="bi bi-briefcase"></i></span>
+                    @forelse ($services as $service)
+                        @foreach ($service as $item)
+                            <div class="col-md-4" data-aos="flip-down">
+                                <div class="service-box">
+                                    <div class="service-ico">
+                                        <span class="ico-circle"><i class="{{ $item->icon }}"></i></span>
+                                    </div>
+                                    <div class="service-content">
+                                        <h2 class="s-title">{{ $item->experience }}</h2>
+                                        <p class="s-description text-center">
+                                            {!! $item->body !!}
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="service-content">
-                                <h2 class="s-title">Web Design</h2>
-                                <p class="s-description text-center">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem
-                                    fugiat! Quia,
-                                    provident vitae! Magni
-                                    tempora perferendis eum non provident.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="service-box">
-                            <div class="service-ico">
-                                <span class="ico-circle"><i class="bi bi-card-checklist"></i></span>
-                            </div>
-                            <div class="service-content">
-                                <h2 class="s-title">Web Development</h2>
-                                <p class="s-description text-center">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem
-                                    fugiat! Quia,
-                                    provident vitae! Magni
-                                    tempora perferendis eum non provident.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="service-box">
-                            <div class="service-ico">
-                                <span class="ico-circle"><i class="bi bi-bar-chart"></i></span>
-                            </div>
-                            <div class="service-content">
-                                <h2 class="s-title">Photography</h2>
-                                <p class="s-description text-center">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem
-                                    fugiat! Quia,
-                                    provident vitae! Magni
-                                    tempora perferendis eum non provident.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="service-box">
-                            <div class="service-ico">
-                                <span class="ico-circle"><i class="bi bi-binoculars"></i></span>
-                            </div>
-                            <div class="service-content">
-                                <h2 class="s-title">Responsive Design</h2>
-                                <p class="s-description text-center">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem
-                                    fugiat! Quia,
-                                    provident vitae! Magni
-                                    tempora perferendis eum non provident.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="service-box">
-                            <div class="service-ico">
-                                <span class="ico-circle"><i class="bi bi-brightness-high"></i></span>
-                            </div>
-                            <div class="service-content">
-                                <h2 class="s-title">Graphic Design</h2>
-                                <p class="s-description text-center">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem
-                                    fugiat! Quia,
-                                    provident vitae! Magni
-                                    tempora perferendis eum non provident.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="service-box">
-                            <div class="service-ico">
-                                <span class="ico-circle"><i class="bi bi-calendar4-week"></i></span>
-                            </div>
-                            <div class="service-content">
-                                <h2 class="s-title">Marketing Services</h2>
-                                <p class="s-description text-center">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem
-                                    fugiat! Quia,
-                                    provident vitae! Magni
-                                    tempora perferendis eum non provident.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                        @endforeach
+                    @empty
+                        <span class="text-danger text-center">Nuk ka rezultat</span>
+                    @endforelse
+
                 </div>
             </div>
         </section><!-- End Services Section -->
 
         <!-- ======= Facts Section======= -->
-        <section id="" class="section-counter paralax-mf bg-image"
-            style="background-image: url(assets/img/counters-bg.jpg)">
+
+        <section id="" class="section-counter paralax-mf bg-image" style="background-image: url('img/server.jpg')">
             <div class="overlay-mf"></div>
             <div class="container position-relative">
-                <div class="row">
-                    <div class="col-sm-3 col-lg-3">
-                        <div class="counter-box counter-box pt-4 pt-md-0">
-                            <div class="counter-ico">
-                                <span class="ico-circle"><i class="bi bi-check"></i></span>
+                <div class="row align-self-center mt-5" data-aos="zoom-out-down">
+                    {{-- @dd(collect($facts) --}}
+                    @foreach ($facts as $item)
+                        @foreach ($item as $fact)
+                            <div class="col-sm-3 col-lg-3">
+                                <div class="counter-box counter-box pt-4 pt-md-0">
+                                    <div class="counter-ico">
+                                        <span class="ico-circle"><i class="{{ $fact->icon }}"></i></span>
+                                    </div>
+                                    <div class="counter-num">
+                                        <p class="count">
+                                            {{ $fact->count }}
+                                        </p>
+                                        <span class="counter-text">{{ str($fact->title)->upper() }}</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="counter-num">
-                                <p data-purecounter-start="0" data-purecounter-end="450" data-purecounter-duration="0"
-                                    class="counter purecounter">450</p>
-                                <span class="counter-text">WORKS COMPLETED</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3 col-lg-3">
-                        <div class="counter-box pt-4 pt-md-0">
-                            <div class="counter-ico">
-                                <span class="ico-circle"><i class="bi bi-journal-richtext"></i></span>
-                            </div>
-                            <div class="counter-num">
-                                <p data-purecounter-start="0" data-purecounter-end="25" data-purecounter-duration="0"
-                                    class="counter purecounter">25</p>
-                                <span class="counter-text">YEARS OF EXPERIENCE</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3 col-lg-3">
-                        <div class="counter-box pt-4 pt-md-0">
-                            <div class="counter-ico">
-                                <span class="ico-circle"><i class="bi bi-people"></i></span>
-                            </div>
-                            <div class="counter-num">
-                                <p data-purecounter-start="0" data-purecounter-end="550" data-purecounter-duration="0"
-                                    class="counter purecounter">550</p>
-                                <span class="counter-text">TOTAL CLIENTS</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3 col-lg-3">
-                        <div class="counter-box pt-4 pt-md-0">
-                            <div class="counter-ico">
-                                <span class="ico-circle"><i class="bi bi-award"></i></span>
-                            </div>
-                            <div class="counter-num">
-                                <p data-purecounter-start="0" data-purecounter-end="48" data-purecounter-duration="0"
-                                    class="counter purecounter">48</p>
-                                <span class="counter-text">AWARD WON</span>
-                            </div>
-                        </div>
-                    </div>
+                        @endforeach
+                    @endforeach
+
                 </div>
             </div>
         </section>
@@ -278,11 +173,11 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="title-box text-center">
-                            <h3 class="title-a">
-                                Portfolio
+                            <h3 class="title-a" data-aos="zoom-in">
+                                {{ __('Portfolio') }}
                             </h3>
                             <p class="subtitle-a">
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                                {{-- Lorem ipsum, dolor sit amet consectetur adipisicing elit. --}}
                             </p>
                             <div class="line-mf"></div>
                         </div>
@@ -290,10 +185,11 @@
                 </div>
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="work-box">
-                            <a href="assets/img/work-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox">
+                        <div class="work-box" data-aos="zoom-in">
+                            <a href="#" data-gallery="portfolioGallery" class="portfolio-lightbox">
                                 <div class="work-img">
-                                    <img src="assets/img/work-1.jpg" alt="" class="img-fluid">
+                                    <img src="https://images.unsplash.com/photo-1650272808082-808982c3cbfc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1633&q=80"
+                                        alt="" class="img-fluid">
                                 </div>
                             </a>
                             <div class="work-content">
@@ -315,143 +211,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="work-box">
-                            <a href="assets/img/work-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox">
-                                <div class="work-img">
-                                    <img src="assets/img/work-2.jpg" alt="" class="img-fluid">
-                                </div>
-                            </a>
-                            <div class="work-content">
-                                <div class="row">
-                                    <div class="col-sm-8">
-                                        <h2 class="w-title">Loreda Cuno Nere</h2>
-                                        <div class="w-more">
-                                            <span class="w-ctegory">Web Design</span> / <span
-                                                class="w-date">18 Sep. 2018</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="w-like">
-                                            <a href="portfolio-details.html"> <span
-                                                    class="bi bi-plus-circle"></span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="work-box">
-                            <a href="assets/img/work-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox">
-                                <div class="work-img">
-                                    <img src="assets/img/work-3.jpg" alt="" class="img-fluid">
-                                </div>
-                            </a>
-                            <div class="work-content">
-                                <div class="row">
-                                    <div class="col-sm-8">
-                                        <h2 class="w-title">Mavrito Lana Dere</h2>
-                                        <div class="w-more">
-                                            <span class="w-ctegory">Web Design</span> / <span
-                                                class="w-date">18 Sep. 2018</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="w-like">
-                                            <a href="portfolio-details.html"> <span
-                                                    class="bi bi-plus-circle"></span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="work-box">
-                            <a href="assets/img/work-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox">
-                                <div class="work-img">
-                                    <img src="assets/img/work-4.jpg" alt="" class="img-fluid">
-                                </div>
-                            </a>
-                            <div class="work-content">
-                                <div class="row">
-                                    <div class="col-sm-8">
-                                        <h2 class="w-title">Bindo Laro Cado</h2>
-                                        <div class="w-more">
-                                            <span class="w-ctegory">Web Design</span> / <span
-                                                class="w-date">18 Sep. 2018</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="w-like">
-                                            <a href="portfolio-details.html"> <span
-                                                    class="bi bi-plus-circle"></span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="work-box">
-                            <a href="assets/img/work-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox">
-                                <div class="work-img">
-                                    <img src="assets/img/work-5.jpg" alt="" class="img-fluid">
-                                </div>
-                            </a>
-                            <div class="work-content">
-                                <div class="row">
-                                    <div class="col-sm-8">
-                                        <h2 class="w-title">Studio Lena Mado</h2>
-                                        <div class="w-more">
-                                            <span class="w-ctegory">Web Design</span> / <span
-                                                class="w-date">18 Sep. 2018</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="w-like">
-                                            <a href="portfolio-details.html"> <span
-                                                    class="bi bi-plus-circle"></span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="work-box">
-                            <a href="assets/img/work-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox">
-                                <div class="work-img">
-                                    <img src="assets/img/work-6.jpg" alt="" class="img-fluid">
-                                </div>
-                            </a>
-                            <div class="work-content">
-                                <div class="row">
-                                    <div class="col-sm-8">
-                                        <h2 class="w-title">Studio Big Bang</h2>
-                                        <div class="w-more">
-                                            <span class="w-ctegory">Web Design</span> / <span
-                                                class="w-date">18 Sep. 2017</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="w-like">
-                                            <a href="portfolio-details.html"> <span
-                                                    class="bi bi-plus-circle"></span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                </div>
-            </div>
         </section><!-- End Portfolio Section -->
 
         <!-- ======= Testimonials Section ======= -->
-        <div class="testimonials paralax-mf bg-image" style="background-image: url(assets/img/overlay-bg.jpg)">
+        {{-- <div class="testimonials paralax-mf bg-image" style="background-image: url(assets/img/overlay-bg.jpg)">
             <div class="overlay-mf"></div>
             <div class="container">
                 <div class="row">
@@ -503,7 +267,7 @@
                     </div>
                 </div>
             </div>
-        </div><!-- End Testimonials Section -->
+        </div><!-- End Testimonials Section --> --}}
 
         <!-- ======= Blog Section ======= -->
         <section id="blog" class="blog-mf sect-pt4 route">
@@ -511,22 +275,26 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="title-box text-center">
-                            <h3 class="title-a">
-                                Blog
+                            <h3 class="title-a" data-aos="zoom-in">
+                                {{ __('Blog') }}
                             </h3>
                             <p class="subtitle-a">
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                                {{-- Lorem ipsum, dolor sit amet consectetur adipisicing elit. --}}
                             </p>
                             <div class="line-mf"></div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="card card-blog">
+                    <div class="owl-carousel owl-theme">
+
+                        <div class="card card-blog shadow" data-aos="zoom-in-up">
                             <div class="card-img">
-                                <a href="blog-single.html"><img src="assets/img/post-1.jpg" alt=""
-                                        class="img-fluid"></a>
+                                <a href="#">
+                                    <img class="img-fluid"
+                                        src="https://images.unsplash.com/photo-1547394765-185e1e68f34e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+                                        alt="">
+                                </a>
                             </div>
                             <div class="card-body">
                                 <div class="card-category-box">
@@ -534,41 +302,10 @@
                                         <h6 class="category">Travel</h6>
                                     </div>
                                 </div>
-                                <h3 class="card-title"><a href="blog-single.html">See more ideas about Travel</a>
-                                </h3>
-                                <p class="card-description">
-                                    Proin eget tortor risus. Pellentesque in ipsum id orci porta dapibus. Praesent
-                                    sapien massa, convallis
-                                    a pellentesque nec,
-                                    egestas non nisi.
-                                </p>
-                            </div>
-                            <div class="card-footer">
-                                <div class="post-author">
-                                    <a href="#">
-                                        <img src="assets/img/testimonial-2.jpg" alt="" class="avatar rounded-circle">
-                                        <span class="author">Morgan Freeman</span>
+                                <h3 class="card-title">
+                                    <a href="blog-single.html">
+                                        See more ideas about Travel
                                     </a>
-                                </div>
-                                <div class="post-date">
-                                    <span class="bi bi-clock"></span> 10 min
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card card-blog">
-                            <div class="card-img">
-                                <a href="blog-single.html"><img src="assets/img/post-2.jpg" alt=""
-                                        class="img-fluid"></a>
-                            </div>
-                            <div class="card-body">
-                                <div class="card-category-box">
-                                    <div class="card-category">
-                                        <h6 class="category">Web Design</h6>
-                                    </div>
-                                </div>
-                                <h3 class="card-title"><a href="blog-single.html">See more ideas about Travel</a>
                                 </h3>
                                 <p class="card-description">
                                     Proin eget tortor risus. Pellentesque in ipsum id orci porta dapibus. Praesent
@@ -580,41 +317,8 @@
                             <div class="card-footer">
                                 <div class="post-author">
                                     <a href="#">
-                                        <img src="assets/img/testimonial-2.jpg" alt="" class="avatar rounded-circle">
-                                        <span class="author">Morgan Freeman</span>
-                                    </a>
-                                </div>
-                                <div class="post-date">
-                                    <span class="bi bi-clock"></span> 10 min
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card card-blog">
-                            <div class="card-img">
-                                <a href="blog-single.html"><img src="assets/img/post-3.jpg" alt=""
-                                        class="img-fluid"></a>
-                            </div>
-                            <div class="card-body">
-                                <div class="card-category-box">
-                                    <div class="card-category">
-                                        <h6 class="category">Web Design</h6>
-                                    </div>
-                                </div>
-                                <h3 class="card-title"><a href="blog-single.html">See more ideas about Travel</a>
-                                </h3>
-                                <p class="card-description">
-                                    Proin eget tortor risus. Pellentesque in ipsum id orci porta dapibus. Praesent
-                                    sapien massa, convallis
-                                    a pellentesque nec,
-                                    egestas non nisi.
-                                </p>
-                            </div>
-                            <div class="card-footer">
-                                <div class="post-author">
-                                    <a href="#">
-                                        <img src="assets/img/testimonial-2.jpg" alt="" class="avatar rounded-circle">
+                                        <img src="https://images.unsplash.com/photo-1547394765-185e1e68f34e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+                                            alt="" class="avatar rounded-circle">
                                         <span class="author">Morgan Freeman</span>
                                     </a>
                                 </div>
@@ -630,66 +334,31 @@
 
         <!-- ======= Contact Section ======= -->
         <section id="contact" class="paralax-mf footer-paralax bg-image sect-mt4 route"
-            style="background-image: url(assets/img/overlay-bg.jpg)">
+            style="background-image: url(https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80)">
             <div class="overlay-mf"></div>
             <div class="container">
+                <x-alert />
                 <div class="row">
                     <div class="col-sm-12">
-                        <div class="contact-mf">
-                            <div id="contact" class="box-shadow-full">
+                        <div class="contact-mf ">
+                            <div id="contact" class="box-shadow-full shadow-lg rounded " data-aos="zoom-in">
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-6" data-aos="fade-down-right" data-aos-duration="1200"
+                                        data-aos-duration="600">
                                         <div class="title-box-2">
                                             <h5 class="title-left">
-                                                Send Message Us
+                                                {{ __(' Send Message') }}
                                             </h5>
                                         </div>
                                         <div>
-                                            <form action="forms/contact.php" method="post" role="form"
-                                                class="php-email-form">
-                                                <div class="row">
-                                                    <div class="col-md-12 mb-3">
-                                                        <div class="form-group">
-                                                            <input type="text" name="name" class="form-control"
-                                                                id="name" placeholder="Your Name" required>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12 mb-3">
-                                                        <div class="form-group">
-                                                            <input type="email" class="form-control" name="email"
-                                                                id="email" placeholder="Your Email" required>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12 mb-3">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" name="subject"
-                                                                id="subject" placeholder="Subject" required>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12 text-center my-3">
-                                                        <div class="loading">Loading</div>
-                                                        <div class="error-message"></div>
-                                                        <div class="sent-message">Your message has been sent. Thank
-                                                            you!</div>
-                                                    </div>
-                                                    <div class="col-md-12 text-center">
-                                                        <button type="submit"
-                                                            class="button button-a button-big button-rouded">Send
-                                                            Message</button>
-                                                    </div>
-                                                </div>
-                                            </form>
+                                            <livewire:admin.contact.create />
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-6" data-aos="fade-down-left" data-aos-duration="1200"
+                                        data-aos-duration="600">
                                         <div class="title-box-2 pt-4 pt-md-0">
                                             <h5 class="title-left">
-                                                Get in Touch
+                                                {{ __('Get in Touch') }}
                                             </h5>
                                         </div>
                                         <div class="more-info">
@@ -702,22 +371,47 @@
                                                 mollitia inventore?
                                             </p>
                                             <ul class="list-ico">
-                                                <li><span class="bi bi-geo-alt"></span> 329 WASHINGTON ST BOSTON, MA
-                                                    02108</li>
-                                                <li><span class="bi bi-phone"></span> (617) 557-0089</li>
-                                                <li><span class="bi bi-envelope"></span> contact@example.com</li>
+                                                <li>
+                                                    <span class="fa-solid fa-location-dot"> Mir osht mes me dit</span>
+                                                </li>
+                                                <li>
+                                                    <span class="fa-solid fa-phone"></span> (+383) 44 567-561
+                                                </li>
+
+                                                <li><span class="fa-solid fa-envelope"></span> agexha@gmail.com</li>
                                             </ul>
                                         </div>
                                         <div class="socials">
                                             <ul>
-                                                <li><a href=""><span class="ico-circle"><i
-                                                                class="bi bi-facebook"></i></span></a></li>
-                                                <li><a href=""><span class="ico-circle"><i
-                                                                class="bi bi-instagram"></i></span></a></li>
-                                                <li><a href=""><span class="ico-circle"><i
-                                                                class="bi bi-twitter"></i></span></a></li>
-                                                <li><a href=""><span class="ico-circle"><i
-                                                                class="bi bi-linkedin"></i></span></a></li>
+                                                <li>
+                                                    <a href="" title="Facebook">
+                                                        <span class="ico-circle">
+                                                            <i class="fa-brands fa-facebook"></i>
+                                                        </span>
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="#" title="Instagram">
+                                                        <span class="ico-circle">
+                                                            <i class="fa-brands fa-instagram"></i>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" title="Twitter">
+                                                        <span class="ico-circle">
+                                                            <i class="fa-brands fa-twitter"></i>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ config('social.linkedin') }}" title="Linkedin">
+                                                        <span class="ico-circle">
+                                                            <i class="fa-brands fa-linkedin"></i>
+                                                        </span>
+                                                    </a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -728,4 +422,57 @@
                 </div>
             </div>
         </section><!-- End Contact Section -->
+
+        @push('styles')
+            <link rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+                integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+                crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <link rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+                integrity="sha512-sMXtMNL1zRzolHYKEu    M2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+                crossorigin="anonymous" referrerpolicy="no-referrer" />
+        @endpush
+
+        @push('head_scripts')
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+                        integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+                        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        @endpush
+        <script>
+            $('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+
+                animateOut: 'slideOutDown',
+                animateIn: 'flipInX',
+
+                autoplay: true,
+                autoplayTimeout: 3400, //3.4s
+                autoplayHoverPause: true,
+
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 3
+                    }
+                }
+            })
+        </script>
+        <script type="text/javascript">
+            $(".count").counterUp({
+                delay: 10,
+                time: 1500
+            });
+        </script>
+
+
 </x-app-layout>

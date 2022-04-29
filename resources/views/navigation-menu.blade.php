@@ -1,7 +1,7 @@
 <nav id="navbar" class="navbar navbar-expand-md navbar-light bg-white border-bottom sticky-top">
     <div class="container">
         <!-- Logo -->
-        <a class="navbar-brand me-4" href="/">
+        <a class="navbar-brand me-4" href="{{ Route::is('ballina') ? '#ballina' : route('ballina') }}">
             <x-jet-application-mark width="43" />
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -12,7 +12,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
-                <x-jet-nav-link href="{{ Route::is('dashboard') ? '#ballina' : route('dashboard') }}">
+                <x-jet-nav-link href="{{ Route::is('ballina') ? '#ballina' : route('ballina') }}">
                     {{ __('Ballina') }}
                 </x-jet-nav-link>
 
@@ -31,7 +31,7 @@
                         {{ $link }}
                     </x-jet-nav-link>
                 @endforeach
-                {{-- @dd(request()->routeIs('dashboard')."#services") --}}
+                {{-- @dd(request()->routeIs('ballina')."#services") --}}
             </ul>
             {{-- <div class="form-check form-switch">
                 <input class="form-check-input" type="checkbox" id="darkMode">

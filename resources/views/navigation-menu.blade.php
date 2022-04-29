@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white border-bottom sticky-top">
+<nav id="navbar" class="navbar navbar-expand-md navbar-light bg-white border-bottom sticky-top">
     <div class="container">
         <!-- Logo -->
         <a class="navbar-brand me-4" href="/">
@@ -12,9 +12,26 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
-                <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                <x-jet-nav-link href="{{ Route::is('dashboard') ? '#ballina' : route('dashboard') }}">
                     {{ __('Ballina') }}
                 </x-jet-nav-link>
+
+                @php
+                    $linkNavigate = [
+                        'About Me' => '#about',
+                        'Services' => '#services',
+                        'Portfolio' => '#portofilo',
+                        'Blog' => '#blog',
+                        'Contact' => '#contact',
+                    ];
+                @endphp
+
+                @foreach ($linkNavigate as $link => $href)
+                    <x-jet-nav-link href="{{ $href }}">
+                        {{ $link }}
+                    </x-jet-nav-link>
+                @endforeach
+                {{-- @dd(request()->routeIs('dashboard')."#services") --}}
             </ul>
             {{-- <div class="form-check form-switch">
                 <input class="form-check-input" type="checkbox" id="darkMode">
@@ -107,7 +124,7 @@
                             <!-- Authentication -->
                             <x-jet-dropdown-link href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
-                                                                                 document.getElementById('logout-form').submit();">
+                                                                                                                                     document.getElementById('logout-form').submit();">
                                 {{ __('Log out') }}
                             </x-jet-dropdown-link>
                             <form method="POST" id="logout-form" action="{{ route('logout') }}">
@@ -119,10 +136,93 @@
 
             </ul>
             <div class="d-flex align-items-center header_icone">
-                <a href="{{ config('social.github') }}"    target="_blank" title="Github" style="margin-right: 8px;"> <i class="fa-brands fa-github"></i></a>
-                <a href="{{ config('social.linkedin') }}"  target="_blank" title="Linkedin"> <i class="fa-brands fa-linkedin"></i></a>
+                <a href="{{ config('social.github') }}" target="_blank" title="Github" style="margin-right: 8px;"> <i
+                        class="fa-brands fa-github"></i></a>
+                <a href="{{ config('social.linkedin') }}" target="_blank" title="Linkedin"> <i
+                        class="fa-brands fa-linkedin"></i></a>
             </div>
 
         </div>
     </div>
 </nav>
+
+{{-- <script>
+    let darkModeOn = false;
+
+    const createStorage = (name, value) => {
+        localStorage.setItem(name, value);
+    }
+
+    const readStorage = name => {
+        return localStorage.getItem(name);
+    }
+
+    const deleteStorage = name => {
+        localStorage.removeItem(name);
+    }
+
+    const toggleDarkMode = (e) => {
+        if (document.body.classList.contains("dark-mode")) {
+            document.body.classList.remove("dark-mode");
+            darkModeOn = false;
+            createStorage("my_preferredMode", "light-mode");
+        } else {
+            document.body.classList.add("dark-mode");
+            darkModeOn = true;
+            createStorage("my_preferredMode", "dark-mode");
+        }
+    }
+
+    document.getElementById("darkMode").addEventListener("click", toggleDarkMode)
+
+    document.addEventListener("DOMContentLoaded", () => {
+        if (readStorage("my_preferredMode")) {
+            if (readStorage("my_preferredMode") == "dark-mode") {
+                darkModeOn = true;
+            } else {
+                darkModeOn = false;
+            }
+        } else {
+            if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+                darkModeOn = true;
+            } else {
+                if (document.body.classList.contains("dark-mode")) {
+                    darkModeOn = true;
+                } else {
+                    darkModeOn = false;
+                }
+            }
+        }
+
+        if (darkModeOn) {
+            if (!document.body.classList.contains("dark-mode")) {
+                document.body.classList.add("dark-mode");
+            }
+            document.getElementById("darkMode").checked = true
+        } else {
+            if (document.body.classList.contains("dark-mode")) {
+                document.body.classList.remove("dark-mode");
+            }
+        }
+    })
+</script>
+
+
+<script>
+    let navbarlinks = select('#navbar .scrollto', true)
+    const navbarlinksActive = () => {
+        let position = window.scrollY + 200
+        navbarlinks.forEach(navbarlink => {
+            if (!navbarlink.hash) return
+            let section = select(navbarlink.hash)
+            if (!section) return
+            if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
+                navbarlink.classList.add('active')
+            } else {
+                navbarlink.classList.remove('active')
+            }
+        })
+    }
+    window.addEventListener('load', navbarlinksActive)
+    onscroll(document, navbarlinksActive)
+</script> --}}

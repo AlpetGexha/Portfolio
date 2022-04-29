@@ -1,20 +1,24 @@
 <x-app-layout>
-    <section id="hero" class="hero route bg-image" style="background-image: url(assets/img/hero-bg.jpg)">
+
+    <section id="ballina" class="hero route bg-image" style="background-image: url()">
         <div class="overlay-itro"></div>
         <div class="hero-content display-table">
             <div class="table-cell">
                 <div class="container">
                     {{-- <p class="display-6 color-d">Hello, world!</p> --}}
-                    <h1 class="hero-title mb-4">I am Alpet Gexha</h1>
+                    <h1 class="hero-title mb-4">{{ __('I am Alpet Gexha') }}</h1>
                     <p class="hero-subtitle">
-                        {{-- <span class="typed" data-typed-items="Designer, Developer, Freelancer, Photographer"></span> --}}
+                        <span class="typed" id="typed"
+                            data-typed-items="Web Developer, Web Designer, Freelancer">
+                        </span>
                     </p>
-                    {{-- <p class="pt-3"><a class="btn btn-primary btn js-scroll px-4" href="#about" role="button">Learn More</a></p> --}}
+                    <p class="pt-3">
+                        <a class="btn btn-primary btn js-scroll px-4" href="#about">{{ __('Learn More') }}</a>
+                    </p>
                 </div>
             </div>
         </div>
     </section>
-
     <main id="main">
         <!-- ======= About Section ======= -->
         <section id="about" class="about-mf sect-pt4 route" data-aos="zoom-in-up">
@@ -136,39 +140,39 @@
 
                 </div>
             </div>
-        </section><!-- End Services Section -->
 
-        <!-- ======= Facts Section======= -->
+            <!-- ======= Facts Section======= -->
 
-        <section id="" class="section-counter paralax-mf bg-image" style="background-image: url('img/server.jpg')">
-            <div class="overlay-mf"></div>
-            <div class="container position-relative">
-                <div class="row align-self-center mt-5" data-aos="zoom-out-down">
-                    {{-- @dd(collect($facts) --}}
-                    @foreach ($facts as $item)
-                        @foreach ($item as $fact)
-                            <div class="col-sm-3 col-lg-3">
-                                <div class="counter-box counter-box pt-4 pt-md-0">
-                                    <div class="counter-ico">
-                                        <span class="ico-circle"><i class="{{ $fact->icon }}"></i></span>
-                                    </div>
-                                    <div class="counter-num">
-                                        <p class="count">
-                                            {{ $fact->count }}
-                                        </p>
-                                        <span class="counter-text">{{ str($fact->title)->upper() }}</span>
+            <div class="section-counter paralax-mf bg-image" style="background-image: url('img/server.jpg')">
+                <div class="overlay-mf"></div>
+                <div class="container position-relative">
+                    <div class="row align-self-center mt-5" data-aos="zoom-out-down">
+                        {{-- @dd(collect($facts) --}}
+                        @foreach ($facts as $item)
+                            @foreach ($item as $fact)
+                                <div class="col-sm-3 col-lg-3">
+                                    <div class="counter-box counter-box pt-4 pt-md-0">
+                                        <div class="counter-ico">
+                                            <span class="ico-circle"><i class="{{ $fact->icon }}"></i></span>
+                                        </div>
+                                        <div class="counter-num">
+                                            <p class="count">
+                                                {{ $fact->count }}
+                                            </p>
+                                            <span class="counter-text">{{ str($fact->title)->upper() }}</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endforeach
                         @endforeach
-                    @endforeach
 
+                    </div>
                 </div>
             </div>
-        </section>
+        </section><!-- End Services Section -->
 
         <!-- ======= Portfolio Section ======= -->
-        <section id="work" class="portfolio-mf sect-pt4 route">
+        <section id="portofilo" class="portfolio-mf sect-pt4 route">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
@@ -343,7 +347,7 @@
                         <div class="contact-mf ">
                             <div id="contact" class="box-shadow-full shadow-lg rounded " data-aos="zoom-in">
                                 <div class="row">
-                                    <div class="col-md-6" data-aos="fade-down-right" data-aos-duration="1200"
+                                    <div class="col-lg-7" data-aos="fade-down-right" data-aos-duration="1200"
                                         data-aos-duration="600">
                                         <div class="title-box-2">
                                             <h5 class="title-left">
@@ -354,7 +358,7 @@
                                             <livewire:admin.contact.create />
                                         </div>
                                     </div>
-                                    <div class="col-md-6" data-aos="fade-down-left" data-aos-duration="1200"
+                                    <div class="col-lg-5" data-aos="fade-down-left" data-aos-duration="1200"
                                         data-aos-duration="600">
                                         <div class="title-box-2 pt-4 pt-md-0">
                                             <h5 class="title-left">
@@ -441,6 +445,7 @@
                         integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
                         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         @endpush
+        <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
         <script>
             $('.owl-carousel').owlCarousel({
                 loop: true,
@@ -467,12 +472,4 @@
                 }
             })
         </script>
-        <script type="text/javascript">
-            $(".count").counterUp({
-                delay: 10,
-                time: 1500
-            });
-        </script>
-
-
 </x-app-layout>

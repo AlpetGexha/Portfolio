@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BallinaController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [BallinaController::class, 'index'])->name('ballina');
+
+
+Route::get('/blog/{post:slug}', [PostController::class, 'single'])->name('blog.single');
+Route::get('/blog', [PostController::class, 'index'])->name('blog.show');

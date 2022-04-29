@@ -12,8 +12,6 @@ class Posts extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
 
-    use HasFactory;
-
     protected $fillable = [
         'user_id', 'title', 'slug', 'body', 'views', 'status',
     ];
@@ -32,7 +30,7 @@ class Posts extends Model implements HasMedia
     public function registerMediaCollections(): void
     {
         $this
-            ->addMediaCollection('post')
+            ->addMediaCollection('posts')
             ->singleFile();
     }
 

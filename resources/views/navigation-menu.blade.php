@@ -1,5 +1,10 @@
-<nav id="navbar" class="navbar navbar-expand-md navbar-light bg-white border-bottom sticky-top">
-    <div class="container">
+<nav id="navbar" class="navbar navbar-expand-md navbar-light bg-white border-bottom sticky-top shadow">
+    @if (Route::is('blog.single'))
+        <div class="progress fixed-top" style="height: 5px;">
+            <div class="progress-bar" style="width:1px;" id='myBar'></div>
+        </div>
+    @endif
+    <div class="container"  data-aos="zoom-out" >
         <!-- Logo -->
         <a class="navbar-brand me-4" href="{{ Route::is('ballina') ? '#ballina' : route('ballina') }}">
             <x-jet-application-mark width="43" />
@@ -31,6 +36,10 @@
                         {{ $link }}
                     </x-jet-nav-link>
                 @endforeach
+
+                <x-jet-nav-link href="{{ route('blog.show') }}" :active="request()->routeIs('blog.show')">
+                    {{ __('Posts') }}
+                </x-jet-nav-link>
                 {{-- @dd(request()->routeIs('ballina')."#services") --}}
             </ul>
             {{-- <div class="form-check form-switch">
@@ -45,8 +54,8 @@
                         <x-slot name="trigger">
                             {{ Auth::user()->currentTeam->name }}
 
-                            <svg class="ms-2" width="18" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                fill="currentColor">
+                            <svg class="ms-2" width="18" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 20 20" fill="currentColor">
                                 <path fill-rule="evenodd"
                                     d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
                                     clip-rule="evenodd" />
@@ -113,6 +122,12 @@
                                 {{ __('Profile') }}
                             </x-jet-dropdown-link>
 
+                            @auth
+                                <x-jet-dropdown-link href="{{ url('/admin') }}">
+                                    {{ __('Admin Pannel') }}
+                                </x-jet-dropdown-link>
+                            @endauth
+
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                                 <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
                                     {{ __('API Tokens') }}
@@ -122,9 +137,8 @@
                             <hr class="dropdown-divider">
 
                             <!-- Authentication -->
-                            <x-jet-dropdown-link href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                                                                                                                     document.getElementById('logout-form').submit();">
+                            <x-jet-dropdown-link href="{{ route('logout') }}" onclick="event.preventDefault();
+                                              document.getElementById('logout-form').submit();">
                                 {{ __('Log out') }}
                             </x-jet-dropdown-link>
                             <form method="POST" id="logout-form" action="{{ route('logout') }}">

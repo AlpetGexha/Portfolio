@@ -6,14 +6,14 @@
             <div class="table-cell">
                 <div class="container">
                     {{-- <p class="display-6 color-d">Hello, world!</p> --}}
-                    <h1 class="hero-title mb-4">{{ __('I am Alpet Gexha') }}</h1>
+                    <h1 class="hero-title mb-4"  data-aos="zoom-in">{{ __('I am Alpet Gexha') }}</h1>
                     <p class="hero-subtitle">
                         <span class="typed" id="typed"
                             data-typed-items="Web Developer, Web Designer, Freelancer">
                         </span>
                     </p>
                     <p class="pt-3">
-                        <a class="btn btn-primary btn js-scroll px-4" href="#about">{{ __('Learn More') }}</a>
+                        <a class="btn btn-primary btn js-scroll px-4" href="#about">{{__('Learn More')}}</a>
                     </p>
                 </div>
             </div>

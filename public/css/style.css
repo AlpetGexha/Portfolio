@@ -61,6 +61,12 @@ body {
     transition: all 0.5s ease-in-out;
   }
 
+  .widget-sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 70px;
+}
+
   .header_icone a i{
    font-size: 25px;
   }

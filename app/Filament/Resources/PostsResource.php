@@ -12,6 +12,7 @@ use Filament\Forms\Components\Toggle;
 use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Hidden;
+use Filament\Forms\Components\RichEditor;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
@@ -43,7 +44,7 @@ class PostsResource extends Resource
                     ->required()
                     ->unique(column: 'slug')
                     ->default(fn () => Str::slug(request()->input('title'))),
-                TinyEditor::make('body')->required()->columnSpan(3),
+                RichEditor::make('body')->required()->columnSpan(3),
                 SpatieMediaLibraryFileUpload::make('post')->collection('posts')->label('Photo')->required()->columnSpan(3),
                 Toggle::make('is_visible')
                     ->label('Visible to guests.')

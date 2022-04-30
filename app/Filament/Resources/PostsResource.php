@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\PostsResource\Pages;
 use App\Filament\Resources\PostsResource\RelationManagers;
+use App\Models\Categorys;
 use App\Models\Posts;
 use Filament\Forms;
 use Filament\Tables;
@@ -12,7 +13,9 @@ use Filament\Forms\Components\Toggle;
 use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Hidden;
+use Filament\Forms\Components\MultiSelect;
 use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\SpatieTagsInput;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
@@ -45,6 +48,11 @@ class PostsResource extends Resource
                     ->unique(column: 'slug')
                     ->default(fn () => Str::slug(request()->input('title'))),
                 RichEditor::make('body')->required()->columnSpan(3),
+                SpatieTagsInput::make('tags')->type('categories'),
+                MultiSelect::make('categorys')
+                    ->getSearchResultsUsing(fn (string $searchQuery) => Categorys::where('title', 'like', "%{$searchQuery}%")->limit(25)->pluck('title', 'id'))
+                    ->getOptionLabelsUsing(fn (array $values) => Categorys::find($values)->pluck('title')),
+
                 SpatieMediaLibraryFileUpload::make('post')->collection('posts')->label('Photo')->required()->columnSpan(3),
                 Toggle::make('is_visible')
                     ->label('Visible to guests.')

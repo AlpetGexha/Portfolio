@@ -13,7 +13,7 @@ class Posts extends Model implements HasMedia
     use HasFactory, InteractsWithMedia;
 
     protected $fillable = [
-        'user_id', 'title', 'slug', 'body', 'views', 'status',
+        'user_id', 'title', 'slug', 'body', 'views', 'status', 'categorys'
     ];
 
     public function user()
@@ -39,4 +39,8 @@ class Posts extends Model implements HasMedia
         $this
             ->addMediaConversion('thumb');
     }
+
+    protected $casts = [
+        'categorys' => 'array'
+    ];
 }

@@ -56,10 +56,6 @@
     </script>
     <script src="{{ asset('js/script.js') }}"></script>
     <script type="text/javascript">
-        $(".count").counterUp({
-            delay: 10,
-            time: 1500
-        });
         // Add smooth scrolling to all links
         $("a").on('click', function(event) {
 

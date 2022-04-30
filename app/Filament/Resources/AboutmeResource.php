@@ -39,10 +39,10 @@ class AboutmeResource extends Resource
                         TextInput::make('percentage')->required()->integer()->maxValue(100)->minValue(1),
                         TextInput::make('icon')->nullable(),
                     ])->columns(3),
-                Repeater::make('skills')
+                Repeater::make('socials')->nullable()
                     ->schema([
                         TextInput::make('name')->required(),
-                        TextInput::make('percentage')->required()->integer()->maxValue(100)->minValue(1),
+                        TextInput::make('url')->required()->url(),
                         TextInput::make('icon')->nullable(),
                     ])->columns(3),
                 Repeater::make('services')->columnSpan(3)

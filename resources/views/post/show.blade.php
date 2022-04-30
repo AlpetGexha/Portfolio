@@ -15,7 +15,6 @@
         .work-img:hover img {
             transform: scale(1.3);
         }
-
     </style>
 
     <div class="container">
@@ -24,13 +23,13 @@
                 <div class="col-md-4">
                     <div class="card card-blog shadow" data-aos="zoom-in-up">
 
-                            <a href="{{ route('blog.single', ['post' => $post->slug]) }}"
-                                data-gallery="portfolioGallery" class="portfolio-lightbox">
-                                <div class=" work-img">
-                                    <img class="img-fluid" src="{{ $post->getMedia('posts')->first()->getUrl() }}"
-                                        alt="{{ $post->title }}">
-                                </div>
-                            </a>
+                        <a href="{{ route('blog.single', ['post' => $post->slug]) }}" data-gallery="portfolioGallery"
+                            class="portfolio-lightbox">
+                            <div class=" work-img">
+                                <img class="img-fluid" src="{{ $post->getMedia('posts')->first()->getUrl() }}"
+                                    alt="{{ $post->title }}">
+                            </div>
+                        </a>
 
                         <div class="card-body">
                             {{-- <div class="card-category-box">
@@ -63,7 +62,7 @@
                     </div>
                 </div>
             @empty
-                <p>{{ __('Nuk ka postime') }}</p>
+                <span class="text-center text-danger p-5 mb-5">{{ __('Nuk ka postime') }}</span>
             @endforelse
         </div>
         <div class="d-flex justify-content-center">

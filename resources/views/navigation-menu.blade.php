@@ -4,7 +4,7 @@
             <div class="progress-bar" style="width:1px;" id='myBar'></div>
         </div>
     @endif
-    <div class="container"  data-aos="zoom-out" >
+    <div class="container">
         <!-- Logo -->
         <a class="navbar-brand me-4" href="{{ Route::is('ballina') ? '#ballina' : route('ballina') }}">
             <x-jet-application-mark width="43" />
@@ -32,7 +32,7 @@
                 @endphp
 
                 @foreach ($linkNavigate as $link => $href)
-                    <x-jet-nav-link href="{{ $href }}">
+                    <x-jet-nav-link href="{{ Route::is('ballina') ? $href : route('ballina') }}">
                         {{ $link }}
                     </x-jet-nav-link>
                 @endforeach
@@ -138,7 +138,7 @@
 
                             <!-- Authentication -->
                             <x-jet-dropdown-link href="{{ route('logout') }}" onclick="event.preventDefault();
-                                              document.getElementById('logout-form').submit();">
+                                                          document.getElementById('logout-form').submit();">
                                 {{ __('Log out') }}
                             </x-jet-dropdown-link>
                             <form method="POST" id="logout-form" action="{{ route('logout') }}">

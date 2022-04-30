@@ -1,5 +1,4 @@
 <x-app-layout>
-
     <section id="ballina" class="hero route bg-image" style="background-image: url()">
         <div class="overlay-itro"></div>
         <div class="hero-content display-table">
@@ -121,7 +120,7 @@
                     @forelse ($services as $service)
                         @foreach ($service as $item)
                             <div class="col-md-4" data-aos="flip-down">
-                                <div class="service-box">
+                                <div class="service-box shadow">
                                     <div class="service-ico">
                                         <span class="ico-circle"><i class="{{ $item->icon }}"></i></span>
                                     </div>

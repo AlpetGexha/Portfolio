@@ -89,6 +89,8 @@
     @livewireScripts
 
     @stack('scripts')
+
+    @include('footer')
 </body>
 
 </html>

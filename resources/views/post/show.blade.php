@@ -18,15 +18,16 @@
     </style>
 
     <div class="container">
-        <div class="row">
+        <div class="row g-3 row-cols-1 row-cols-md-3 row-cols-lg-3">
             @forelse ($posts as $post)
-                <div class="col-md-4">
+                <div class="col-md-6 col-lg-4">
                     <div class="card card-blog shadow" data-aos="zoom-in-up">
 
                         <a href="{{ route('blog.single', ['post' => $post->slug]) }}" data-gallery="portfolioGallery"
                             class="portfolio-lightbox">
                             <div class=" work-img">
-                                <img class="img-fluid" src="{{ $post->getMedia('posts')->first()->getUrl() }}"
+                                <img class="card-img-top"
+                                    src="{{ $post->getMedia('posts')->first()->getUrl('test') }}"
                                     alt="{{ $post->title }}">
                             </div>
                         </a>
@@ -49,14 +50,17 @@
                         <div class="card-footer">
                             <div class="post-author">
                                 <a href="#">
-                                    <img src="https://images.unsplash.com/photo-1547394765-185e1e68f34e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+                                    <img src="{{ $post->user->profile_photo_url }}" alt="{{ $post->user->name }}"
                                         alt="" class="avatar rounded-circle">
-                                    .
+                                    {{ $post->user->name }}
 
                                 </a>
                             </div>
                             <div class="post-date">
-                                <span class="bi bi-clock"></span> 10 min
+                                <i class="fas fa-calendar-alt"></i>
+                                <span class="bi bi-clock" ></span> {{ $post->created_at->diffForHumans() }}
+                                <i class="fas fa-eye ml-2" style="margin-left: 10px;"></i>
+                                <span>{{ number_format($post->views) }}</span>
                             </div>
                         </div>
                     </div>

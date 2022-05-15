@@ -57,12 +57,12 @@
                 </ul>
 
                 <div class="single_post_info_show">
-                    <img class="rounded mx-auto d-block shadow" style="width: auto; height: 350px;"
-                        src="{{ $post->getMedia('posts')->first()->getUrl() }}" alt="{{ $post->title }}">
+                    <img class="rounded mx-auto d-block shadow" style="width: auto; height: 450px;"
+                        src="{{ $post->getImg() }}" alt="{{ $post->title }}">
                 </div>
 
                 <article class="mt-3">
-                    {!! html_entity_decode($post->body) !!}
+                    {!! $post->body !!}
                 </article>
             </div>
             <div class="col-md-2">

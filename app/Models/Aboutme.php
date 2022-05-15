@@ -22,13 +22,4 @@ class Aboutme extends Model
         'facts' => 'array',
     ];
 
-    public static function getLinkedin()
-    {
-        return 'https://www.linkedin.com/in/alpet-gexha-499b071a3/';
-    }
-
-    public static function getGithub()
-    {
-        return 'https://www.linkedin.com/in/alpet-gexha-499b071a3/';
-    }
 }

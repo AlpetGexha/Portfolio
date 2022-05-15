@@ -5,6 +5,9 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Str;
+use Filament\Facades\Filament;
+use Filament\Navigation\NavigationItem;
+use Filament\Navigation\UserMenuItem;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -43,6 +46,14 @@ class AppServiceProvider extends ServiceProvider
 
         Str::macro('realReadTime', function ($text) {
             return Str::readTime(Str::removehtml($text));
+        });
+
+        Filament::serving(function () {
+            Filament::registerNavigationGroups([
+                'Blog',
+                'Info',
+                'Authentication',
+            ]);
         });
     }
 }

@@ -13,15 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('portofilos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('body');
-            $table->json('categorys');
+            $table->string('url');
+            $table->string('data_created');
             $table->integer('views')->default(0);
-            // $table->integer('likes')->default(0);
             $table->integer('status')->default(1);
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
@@ -36,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('portofilos');
     }
 };

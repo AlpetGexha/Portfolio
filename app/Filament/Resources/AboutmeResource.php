@@ -24,6 +24,10 @@ class AboutmeResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
+    protected static ?string $navigationGroup = 'Info';
+
+    protected static ?string $slug = 'info/aboutme';
+
     public static function form(Form $form): Form
     {
         return $form
@@ -51,7 +55,7 @@ class AboutmeResource extends Resource
                         Textarea::make('body')->required(),
                         TextInput::make('icon')->required(),
                     ])->columns(3),
-                    Repeater::make('facts')->columnSpan(2)
+                Repeater::make('facts')->columnSpan(2)
                     ->schema([
                         TextInput::make('title')->required(),
                         TextInput::make('count')->required()->integer()->minValue(1),
@@ -69,7 +73,7 @@ class AboutmeResource extends Resource
                 TextColumn::make('profile'),
                 TextColumn::make('email'),
                 TextColumn::make('phone'),
-                TextColumn::make('body'),
+                TextColumn::make('body')->limit(100),
                 // TextColumn::make('skills'),
                 // TextColumn::make('services'),
             ])

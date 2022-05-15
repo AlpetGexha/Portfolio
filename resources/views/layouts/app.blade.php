@@ -46,7 +46,7 @@
     @endif
 
     <!-- Page Content -->
-    <main class="{{ Route::is(['ballina']) ? '' : 'container mt-5' }}">
+    <main class="{{ Route::is(['ballina', 'project.single']) ? '' : 'container mt-5' }}">
         {{ $slot }}
     </main>
 

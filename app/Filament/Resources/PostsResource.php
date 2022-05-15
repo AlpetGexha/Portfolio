@@ -54,7 +54,7 @@ class PostsResource extends Resource
                     ->getOptionLabelsUsing(fn (array $values) => Categorys::find($values)->pluck('title')),
 
                 SpatieMediaLibraryFileUpload::make('post')->collection('posts')->label('Photo')->required()->columnSpan(3),
-                Toggle::make('is_visible')
+                Toggle::make('status')
                     ->label('Visible to guests.')
                     ->default(true),
             ]);

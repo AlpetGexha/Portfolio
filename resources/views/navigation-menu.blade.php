@@ -18,7 +18,7 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
                 <x-jet-nav-link href="{{ Route::is('ballina') ? '#ballina' : route('ballina') }}">
-                    {{ __('Ballina') }}
+                    {{ __('Home') }}
                 </x-jet-nav-link>
 
                 @php
@@ -32,7 +32,7 @@
                 @endphp
 
                 @foreach ($linkNavigate as $link => $href)
-                    <x-jet-nav-link href="{{ Route::is('ballina') ? $href : route('ballina') }}">
+                    <x-jet-nav-link href="{{ $href }}">
                         {{ $link }}
                     </x-jet-nav-link>
                 @endforeach
@@ -138,7 +138,7 @@
 
                             <!-- Authentication -->
                             <x-jet-dropdown-link href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                          document.getElementById('logout-form').submit();">
+                                              document.getElementById('logout-form').submit();">
                                 {{ __('Log out') }}
                             </x-jet-dropdown-link>
                             <form method="POST" id="logout-form" action="{{ route('logout') }}">

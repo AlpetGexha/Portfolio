@@ -8,11 +8,12 @@
                     <h1 class="hero-title mb-4" data-aos="zoom-in">{{ __('I am Alpet Gexha') }}</h1>
                     <p class="hero-subtitle">
                         <span class="typed" id="typed"
-                            data-typed-items="Web Developer, Web Designer, Freelancer">
+                            data-typed-items="Web Developer, Web Designer,Laravel Developer, Freelancer">
                         </span>
                     </p>
                     <p class="pt-3">
-                        <a class="btn btn-primary btn js-scroll px-4" href="#about">{{ __('Learn More') }}</a>
+                        <a class="btn btn-primary btn js-scroll px-4 text-white"
+                            href="#about">{{ __('Learn More') }}</a>
                     </p>
                 </div>
             </div>
@@ -26,7 +27,7 @@
                     <div class="col-sm-12">
                         <div class="box-shadow-full">
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-lg-6">
                                     <div class="row">
                                         <div class="col-sm-6 col-md-5">
                                             <div class="about-img">
@@ -37,60 +38,65 @@
                                         <div class="col-sm-6 col-md-7">
                                             <div class="about-info">
                                                 {{-- @dd($about) --}}
-                                                @forelse ($about as $a)
+
+                                                @if ($about)
                                                     <p>
                                                         <span class="title-s">{{ __('Name:') }} </span>
-                                                        <span>{{ $a->name }} </span>
+                                                        <span>{{ $about->name }} </span>
                                                     </p>
                                                     <p>
                                                         <span class="title-s">{{ __('Profile:') }} </span>
-                                                        <span>{{ $a->profile }} </span>
+                                                        <span>{{ $about->profile }} </span>
                                                     </p>
                                                     <p>
                                                         <span class="title-s">{{ __('Email:') }} </span>
-                                                        <span>{{ $a->email }} </span>
+                                                        <span>{{ $about->email }} </span>
                                                     </p>
                                                     <p>
                                                         <span class="title-s">{{ __('Phone:') }} </span>
-                                                        <span>{{ $a->phone }}</span>
+                                                        <span>{{ $about->phone }}</span>
                                                     </p>
-                                                @empty
-                                                    <span
-                                                        class="text-danger text-center">{{ __('Nuk ka rezultat') }}</span>
-                                                @endforelse
-
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
                                     <div class="skill-mf">
                                         <p class="title-s">{{ __('Skills') }}</p>
-
-                                        @foreach ($skills as $item)
-                                            @foreach ($item as $s)
-                                                <span class="lead"><b>{{ $s->name }} </b></span>
-                                                <span class="pull-right">{{ $s->percentage }}%</span>
-                                                <div class="progress">
-                                                    <div class="progress-bar" role="progressbar"
-                                                        style="width: {{ $s->percentage }}%;"
-                                                        aria-valuenow="{{ $s->percentage }}" aria-valuemin="0"
-                                                        aria-valuemax="100">
+                                        {{-- @dd($skills) --}}
+                                        @if ($skills)
+                                            @foreach ($skills as $item)
+                                                @foreach ($item as $s)
+                                                    <span class="lead"><b>{{ $s->name }} </b></span>
+                                                    <span class="pull-right">{{ $s->percentage }}%</span>
+                                                    <div class="progress">
+                                                        <div class="progress-bar" role="progressbar"
+                                                            style="width: {{ $s->percentage }}%;"
+                                                            aria-valuenow="{{ $s->percentage }}" aria-valuemin="0"
+                                                            aria-valuemax="100">
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                @endforeach
                                             @endforeach
-                                        @endforeach
+                                        @endif
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-lg-6">
                                     <div class="about-me pt-4 pt-md-0">
                                         <div class="title-box-2">
                                             <h5 class="title-left">
                                                 {{ __('About me') }}
                                             </h5>
                                         </div>
-                                        @forelse ($about as $a)
-                                            <div class="lead"> {!! $a->body !!}</div>
-                                        @empty
-                                        @endforelse
+                                        @if ($about)
+                                            <div class="lead"> {!! $about->body !!}</div>
+                                        @endif
+                                    </div>
+                                    <div class="d-flex align-self-end">
+                                        <a href="https://drive.google.com/file/d/1uO01zQkiozJ0kryjRz9Tq2Z2bOKZoZhw/view?usp=sharing"
+                                            target="_blank" class="btn btn-primary btn-lg w-100 text-white"
+                                            style="margin-top: auto;">
+                                            {{ __('Show CV') }} <i class="fas fa-address-card"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -187,33 +193,34 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="work-box" data-aos="zoom-in">
-                            <a href="#" data-gallery="portfolioGallery" class="portfolio-lightbox">
-                                <div class="work-img">
-                                    <img src="https://images.unsplash.com/photo-1650272808082-808982c3cbfc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1633&q=80"
-                                        alt="" class="img-fluid">
-                                </div>
-                            </a>
-                            <div class="work-content">
-                                <div class="row">
-                                    <div class="col-sm-8">
-                                        <h2 class="w-title">Lorem impsum dolor</h2>
-                                        <div class="w-more">
-                                            <span class="w-ctegory">Web Design</span> / <span
-                                                class="w-date">18 Sep. 2018</span>
-                                        </div>
+                    @forelse ($portofilos as $p)
+                        <div class="col-md-4">
+                            <div class="work-box" data-aos="zoom-in">
+                                <a href="{{ route('project.single', ['portofilo' => $p->slug]) }}"
+                                    data-gallery="portfolioGallery" class="portfolio-lightbox">
+                                    <div class="work-img">
+                                        <img class="img-fluid card-img-top"
+                                            src="{{ $p->getMedia('portofilo')->first()->getUrl() }}"
+                                            alt="{{ $p->title }}" alt="{{ $p->title }}">
                                     </div>
-                                    <div class="col-sm-4">
-                                        <div class="w-like">
-                                            <a href="portfolio-details.html"> <span
-                                                    class="bi bi-plus-circle"></span></a>
+                                </a>
+                                <div class="work-content">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <h2 class="w-title">{{ $p->title }}</h2>
+                                            <div class="w-more">
+                                                <span class="w-ctegory">Web Design</span> / <span
+                                                    class="w-date">18 Sep. 2018</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @empty
+                        <span class="text-danger text-center">{{ __('Nuk ka rezultat') }}</span>
+                    @endforelse
+                </div>
 
         </section><!-- End Portfolio Section -->
 
@@ -290,46 +297,50 @@
                 </div>
                 <div class="row">
                     <div class="owl-carousel owl-theme">
+                        @forelse ($posts as $post)
+                            <div class="card card-blog shadow" data-aos="zoom-in-up">
+                                <div class="card-img">
+                                    <a href="#">
+                                        <img class="img-fluid" src="{{ $post->getImg() }}"
+                                            alt="{{ $post->title }}">
+                                    </a>
+                                </div>
+                                <div class="card-body">
+                                    {{-- <div class="card-category-box">
+                                        <div class="card-category">
+                                            <h6 class="category">Travel</h6>
+                                        </div>
+                                    </div> --}}
+                                    <h3 class="card-title">
+                                        <a href="blog-single.html">
+                                            {{ $post->title }}
+                                        </a>
+                                    </h3>
+                                    <p class="card-description">
+                                        {!! $post->body !!}
+                                    </p>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="post-author">
+                                        <a href="#">
+                                            <img src="{{ $post->user->profile_photo_url }}"
+                                                alt="{{ $post->user->name }}" alt="" class="avatar rounded-circle">
+                                            {{ $post->user->name }}
 
-                        <div class="card card-blog shadow" data-aos="zoom-in-up">
-                            <div class="card-img">
-                                <a href="#">
-                                    <img class="img-fluid"
-                                        src="https://images.unsplash.com/photo-1547394765-185e1e68f34e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-                                        alt="">
-                                </a>
-                            </div>
-                            <div class="card-body">
-                                <div class="card-category-box">
-                                    <div class="card-category">
-                                        <h6 class="category">Travel</h6>
+                                        </a>
+                                    </div>
+                                    <div class="post-date">
+                                        <i class="fas fa-calendar-alt"></i>
+                                        <span class="bi bi-clock"></span>
+                                        {{ $post->created_at->diffForHumans() }}
+                                        <i class="fas fa-eye ml-2" style="margin-left: 10px;"></i>
+                                        <span>{{ number_format($post->views) }}</span>
                                     </div>
                                 </div>
-                                <h3 class="card-title">
-                                    <a href="blog-single.html">
-                                        See more ideas about Travel
-                                    </a>
-                                </h3>
-                                <p class="card-description">
-                                    Proin eget tortor risus. Pellentesque in ipsum id orci porta dapibus. Praesent
-                                    sapien massa, convallis
-                                    a pellentesque nec,
-                                    egestas non nisi.
-                                </p>
                             </div>
-                            <div class="card-footer">
-                                <div class="post-author">
-                                    <a href="#">
-                                        <img src="https://images.unsplash.com/photo-1547394765-185e1e68f34e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-                                            alt="" class="avatar rounded-circle">
-                                        <span class="author">Morgan Freeman</span>
-                                    </a>
-                                </div>
-                                <div class="post-date">
-                                    <span class="bi bi-clock"></span> 10 min
-                                </div>
-                            </div>
-                        </div>
+                        @empty
+                            <span class="text-danger text-center">{{ __('Nuk ka rezultat') }}</span>
+                        @endforelse
                     </div>
                 </div>
             </div>

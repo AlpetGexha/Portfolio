@@ -74,6 +74,13 @@ class PortofiloResource extends Resource
         return $table
             ->columns([
                 //
+                // Tables\Columns\TextColumn::make('user_id'),
+                Tables\Columns\TextColumn::make('title'),
+                // Tables\Columns\TextColumn::make('slug'),
+                Tables\Columns\TextColumn::make('body')->limit(50),
+                Tables\Columns\TextColumn::make('views'),
+                Tables\Columns\TextColumn::make('status'),
+                Tables\Columns\TextColumn::make('url'),
             ])
             ->filters([
                 //

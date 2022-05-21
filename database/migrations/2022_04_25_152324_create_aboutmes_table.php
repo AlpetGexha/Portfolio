@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('profile');
             $table->string('email');
             $table->string('phone');
+            $table->date('year');
             $table->text('body');
             $table->json('skills')->nullable();
             $table->json('socials')->nullable();

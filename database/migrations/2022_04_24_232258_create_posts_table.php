@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('body');
-            $table->json('categorys');
+            $table->json('categorys')->nullable();
             $table->integer('views')->default(0);
             // $table->integer('likes')->default(0);
             $table->integer('status')->default(1);

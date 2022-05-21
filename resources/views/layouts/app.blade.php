@@ -9,6 +9,10 @@
     <meta name="og:author" content="Alpet Gexha">
     <x-tab-logo />
 
+    {!! OpenGraph::generate() !!}
+    {!! Twitter::generate() !!}
+    {!! JsonLd::generate() !!}
+
     <title>{{ config('app.name') }}</title>
 
     <!-- Fonts -->

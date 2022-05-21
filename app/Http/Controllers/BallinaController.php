@@ -8,11 +8,17 @@ use App\Models\Posts;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
+use Artesaos\SEOTools\Facades\{SEOMeta, OpenGraph, JsonLd};
 
 class BallinaController extends Controller
 {
     public function index()
     {
+        SEOMeta::addMeta('website:author', 'Alpet Gexha');
+        SEOMeta::setCanonical(asset('svg/logo.svg'));
+
+        OpenGraph::setTitle('Ballina');
+        OpenGraph::addProperty('website:author', 'Alpet Gexha');
 
         $about = Aboutme::select('name', 'profile', 'email', 'phone', 'body', 'year')->first();
 
@@ -54,18 +60,7 @@ class BallinaController extends Controller
 
         $posts = Posts::with(['user', 'media'])->where('status', 1)->orderBy('views', 'desc')->limit(6)->get();
         return view('dashboard', compact(
-            'about',
-            'skills',
-            'services',
-            'facts',
-            'portofilos',
-            'posts',
-            'email',
-            'phone',
-            'profile',
-            'name',
-            'body',
-            'age'
+            'about','skills','services','facts','portofilos','posts','email','phone','profile','name','body','age'
         ));
     }
 }

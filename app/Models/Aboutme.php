@@ -12,7 +12,7 @@ class Aboutme extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'profile', 'email', 'phone', 'body',  'skills', 'socials', 'services', 'facts'
+        'name', 'profile', 'email', 'phone', 'body',  'skills', 'socials', 'services', 'facts','year'
     ];
 
     protected $casts = [

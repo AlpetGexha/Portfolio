@@ -15,6 +15,7 @@
         .work-img:hover img {
             transform: scale(1.3);
         }
+
     </style>
 
     <div class="container">
@@ -39,7 +40,7 @@
                                 </div>
                             </div> --}}
                             <h3 class="card-title">
-                                <a href="">
+                                <a href="{{ route('blog.single', ['post' => $post->slug]) }}">
                                     {{ $post->title }}
                                 </a>
                             </h3>
@@ -58,7 +59,7 @@
                             </div>
                             <div class="post-date">
                                 <i class="fas fa-calendar-alt"></i>
-                                <span class="bi bi-clock" ></span> {{ $post->created_at->diffForHumans() }}
+                                <span class="bi bi-clock"></span> {{ $post->created_at->diffForHumans() }}
                                 <i class="fas fa-eye ml-2" style="margin-left: 10px;"></i>
                                 <span>{{ number_format($post->views) }}</span>
                             </div>

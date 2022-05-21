@@ -20,6 +20,10 @@
             padding: 0.8571429em 1.1428571em;
         }
 
+        .post-info img {
+            width: 100%;
+        }
+
     </style>
 
     <div class="row">
@@ -48,24 +52,24 @@
                     </li>
                     <li>
                         <i class="fa-solid fa-eye"></i>
-                        {{ $post->views }}
+                        {{ $post->views . __(' views') }}
                     </li>
                     <li>
                         <i class="fa-solid fa-book-open-reader"></i>
-                        {{ str()->readTime(str()->removehtml($post->body)) . 'min Read' }}
+                        {{ str()->readTime(str()->removehtml($post->body)) . ' min Read' }}
                     </li>
                 </ul>
 
                 <div class="single_post_info_show">
                     <img class="rounded mx-auto d-block shadow" style="width: auto; height: 450px;"
-                        src="{{ $post->getImg() }}" alt="{{ $post->title }}">
+                        src="{{ $post->getMedia('posts')->first()->getUrl() }}" alt="{{ $post->title }}">
                 </div>
 
                 <article class="mt-3">
                     {!! $post->body !!}
                 </article>
             </div>
-            <div class="col-md-2">
+            {{-- <div class="col-md-2">
                 <div class="widget-sticky">
                     <p>{{ __('Kategorit') }}</p>
                     {{-- @forelse ($postCategorys as $postCategory)
@@ -74,16 +78,16 @@
                 @empty
                 @endforelse --}}
 
-                    {{-- <p> {{ __('Postimet e ngjajshme') }} </p>
+            {{-- <p> {{ __('Postimet e ngjajshme') }} </p>
                 @forelse ($relatePosts as $relatePost)
                     <a class="badge bg-primary text-wrap" href="{{ $relatePost->slug }}">
                         {{ $relatePost->title }}</a>
                 @empty
                 @endforelse --}}
-                    {{-- <h3>Tags: </h3> --}}
-                </div>
-            </div>
+            {{-- <h3>Tags: </h3>
+                </div> --}}
         </div>
+    </div>
     </div>
 
     <div class="komenti">

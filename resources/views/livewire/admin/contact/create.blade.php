@@ -1,5 +1,5 @@
 <form wire:submit.prevent='store()' method="POST" class="contact-form">
-    
+    <x-alert /> 
     <div class="row">
         <div class="col-md-12 mb-3">
             <div class="form-group">

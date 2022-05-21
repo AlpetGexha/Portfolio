@@ -3,6 +3,8 @@
 use App\Http\Controllers\BallinaController;
 use App\Http\Controllers\PortofiloController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ShortUrlController;
+use App\Models\ShortUrl;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +23,9 @@ Route::get('/', [BallinaController::class, 'index'])->name('ballina');
 
 Route::get('/blog/{post:slug}', [PostController::class, 'single'])->name('blog.single');
 Route::get('/blog', [PostController::class, 'index'])->name('blog.show');
+
+
+Route::get('/s/{code}', [ShortUrlController::class, 'redirect'])->name('code');
 
 
 Route::get('/portofilo/{portofilo:slug}', [PortofiloController::class, 'single'])->name('project.single');
